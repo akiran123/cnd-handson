@@ -1,16 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: argocdupdate
   labels:
     app: argocdupdate
-  name: argocdupdate
 spec:
   type: ClusterIP
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: http
-    name: http
   selector:
     app: argocdupdate
-
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
