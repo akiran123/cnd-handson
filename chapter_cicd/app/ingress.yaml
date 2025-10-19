@@ -7,13 +7,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: argocdupdate.example.com
+  - host: argoupdate.example.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: handson
+            name: argoupdate
             port:
               name: http
