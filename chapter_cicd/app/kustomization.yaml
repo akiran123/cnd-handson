@@ -5,5 +5,5 @@ resources:
   - service.yaml
   - ingress.yaml
 images:
-  - name: argoproj/rollouts-demo
-    newTag: blue
+  - name: ghcr.io/nginxinc/nginx-unprivileged
+    newTag: 1.27.0
