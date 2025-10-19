@@ -9,7 +9,14 @@ ArgoCD Image Updaterの参照URL (https://argocd-image-updater.readthedocs.io/en
 
 # ArgoCD Image Updater とは
 
-ArgoCDについては、ArgoCDの章にて説明がされていますが、今回利用する ArgoCD Image Updater は、Kubernetes のワークロードでデプロイされている  
-コンテナイメージの新しいバージョンを検出し、ArgoCD を使って許可された最新バージョンへ自動的に更新させることが可能で、ArgoCDで動作している  
-アプリケーションに対して適切なアプリケーションパラメータを設定することで動作します。  
+ArgoCDについては、ArgoCDの章にて説明がされていますが、今回利用する ArgoCD Image Updater は、Kubernetes のワークロードで  
+デプロイされている  コンテナイメージの新しいバージョンを検出し、ArgoCD を使って許可された最新バージョンへ自動的に更新させることが可能で、  
+ArgoCDで動作している  アプリケーションに対して適切なアプリケーションパラメータを設定することで動作します。  
+使い方は簡単で、更新対象となるイメージの一覧と書くイメージのバージョンをArgoCDのアプリケーションリソースにAnnotationとして付与します。  
+　その後、ArgoCD Image Updaterは、ArgoCDから設定済みのアプリケーションを定期的にポーリングし、対応するコンテナレジストリに新しい   
+バージョンがないかを確認し、レジストリに新しいバージョンが見つかり、バージョン制約を満たしていれば、ArgoCDに対して新しいイメージで  
+アプリケーションを更新します。 
+ArgoCDとの密接な統合により、Sync Windows や Application リソースに対する RBAC 認可などの高度な機能も完全にサポートされています。  
+
+
 
