@@ -4,7 +4,6 @@ metadata:
   labels:
     app: handson
   name: handson
-  namespace: argo-cd
 spec:
   type: ClusterIP
   ports:
