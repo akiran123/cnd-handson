@@ -1,20 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: argocdupdate
   labels:
     app: argocdupdate
-  name: argocdupdate
 spec:
   replicas: 1
-  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: argocdupdate
-  strategy:
-    rollingUpdate:
-      maxSurge: 2
-      maxUnavailable: 1
-    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -25,18 +19,5 @@ spec:
         image: ghcr.io/nginxinc/nginx-unprivileged:1.27.0
         imagePullPolicy: IfNotPresent
         ports:
-        - name: http
-          containerPort: 8080
-          protocol: TCP
-        resources:
-          requests:
-            memory: 32Mi
-            cpu: 5m
-          limits:
-            memory: 84Mi
-            cpu: 100m
-        securityContext:
-          runAsUser: 101
-          runAsGroup: 101
-          allowPrivilegeEscalation: false
-      terminationGracePeriodSeconds: 15
+        - containerPort: 8080
+          name: http
