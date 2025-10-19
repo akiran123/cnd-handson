@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: argoupdate
-  name: argoupdate
+    app: argocdupdate
+  name: argocdupdate
 spec:
   replicas: 1
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: argoupdate
+      app: argocdupdate
   strategy:
     rollingUpdate:
       maxSurge: 2
@@ -18,12 +18,12 @@ spec:
   template:
     metadata:
       labels:
-        app: argoupdate
+        app: argocdupdate
     spec:
       containers:
       - image: argoproj/rollouts-demo:blue
         imagePullPolicy: IfNotPresent
-        name: argoupdate
+        name: argocdupdate
         ports:
         - name: http
           containerPort: 8080
