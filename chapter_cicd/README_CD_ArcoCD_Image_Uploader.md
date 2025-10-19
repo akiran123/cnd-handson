@@ -19,4 +19,10 @@ Annotationとして付与します。その後、ArgoCD Image Updaterは、ArgoC
 ArgoCDとの密接な統合により、Sync Windows や Application リソースに対する RBAC 認可などの高度な機能も完全にサポートされています。  
 
 
+# ArgoCD Image Updater のインストール
+## すでにArgoCDが入っていること
+
+```
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+```
 
