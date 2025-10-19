@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
+  - ingress.yaml
 images:
   - name: argoproj/rollouts-demo
     newTag: blue
