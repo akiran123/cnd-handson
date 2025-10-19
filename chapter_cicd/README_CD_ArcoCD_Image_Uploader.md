@@ -5,6 +5,11 @@ ArgoCDの詳細については、[こちら](https://github.com/cloudnativedaysj
 
 また、このドキュメントについては、CICDのハンズオンにCD部分の拡張版として、<B>ArcoCD Image Updater</B> を使うことを  
 目的としたものになります。  
+ArgoCD Image Updaterの参照URL (https://argocd-image-updater.readthedocs.io/en/stable/)
 
-# 今回利用するリポジトリの準備  
-## Gitリポジトリの準備(ローカル環境)
+# ArgoCD Image Updater とは
+
+ArgoCDについては、ArgoCDの章にて説明がされていますが、今回利用する ArgoCD Image Updater は、Kubernetes のワークロードでデプロイされている  
+コンテナイメージの新しいバージョンを検出し、ArgoCD を使って許可された最新バージョンへ自動的に更新させることが可能で、ArgoCDで動作している  
+アプリケーションに対して適切なアプリケーションパラメータを設定することで動作します。  
+
