@@ -20,9 +20,10 @@ ArgoCDとの密接な統合により、Sync Windows や Application リソース
 
 
 # ArgoCD Image Updater のインストール
-## すでにArgoCDが入っていること
+## chapter_argocdで、ArgoCDがインストールされていること
 
 ```
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
 ```
+
 
