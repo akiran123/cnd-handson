@@ -25,13 +25,19 @@ ArgoCDとの密接な統合により、Sync Windows や Application リソース
 ・　ArgoCD Image Updaterでは、Rollback機能がないため、ArgoCD側で対応、Roadmap上にはあるがまだ未定。
 
 
+# ArgoCD Image Updater で管理したいアプリケーションをArgoCDにデプロイ
+```
+kubectl apply -f ./manifest/application_argocdupdate.yaml
+```
+
+
 # ArgoCD Image Updater のインストール
-## 以下のリンクがあるが、今回namespaceなど異なるため、内容を変更しています。
+### 以下のリンクがあるが、今回namespaceなど異なるため、内容を変更しています。
 https://argocd-image-updater.readthedocs.io/en/stable/install/installation/
 
-git cloneをしているので、Chapter_cicd/app/にあります。
+変更したものについては、chapter_cicd/app/にあります。
 ```
-kubectl apply -f ./app/argocd_image_uploader.yaml
+kubectl apply -f ./manifest/argocd_image_uploader.yaml
 ```
 
 
