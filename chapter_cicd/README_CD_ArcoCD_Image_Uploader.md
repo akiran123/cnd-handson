@@ -1,3 +1,5 @@
+# ArgoCD Image Updater のハンズオンページ
+
 このドキュメントは、CD(Countinuous Delivery)のハンズオン資料になります。  
 ハンズオンのChapter_argocdにある、ArcoCDを利用して実施していきます。  
 そのため、ArgoCDをインストールしていない場合には、以下サイトからインストールを実施してください。  
