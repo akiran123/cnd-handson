@@ -16,7 +16,7 @@ ArgoCDについては、ArgoCDの章にて説明がされていますが、今�
 Annotationとして付与します。その後、ArgoCD Image Updaterは、ArgoCDから設定済みのアプリケーションを定期的にポーリングし、  
 対応するコンテナレジストリに新しい    バージョンがないかを確認し、レジストリに新しいバージョンが見つかり、バージョン制約を  
 満たしていれば、ArgoCDに対して新しいイメージでアプリケーションを更新します。 
-ArgoCDとの密接な統合により、Sync Windows や Application リソースに対する RBAC 認可などの高度な機能も完全にサポートされています。  
+ArgoCDとの密接な統合により、Sync Windows や Application リソースに対するRBAC 認可などの高度な機能も完全にサポートされています。  
 
 ## ArgoCD Image Updaterが動作する条件
 ・　ArgoCDが動作していること
@@ -25,10 +25,19 @@ ArgoCDとの密接な統合により、Sync Windows や Application リソース
 ・　ArgoCD Image Updaterでは、Rollback機能がないため、ArgoCD側で対応、Roadmap上にはあるがまだ未定。
 
 
-# ArgoCD Image Updater で管理したいアプリケーションをArgoCDにデプロイ
+## 既存のArgoCDにあるアプリケーションの確認
+・　chapter_argocdを実施した場合、アプリがすでに一つあります。
+![image](image/updater1.png)
+
+
+## ArgoCD Image Updaterで管理するアプリケーションを作成
 ```
 kubectl apply -f ./manifest/application_argocdupdate.yaml
 ```
+・ <b>argocdupdate<b>が作成されていることを確認
+![image](image/updater2.png)
+
+
 
 
 
