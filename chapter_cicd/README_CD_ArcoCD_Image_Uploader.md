@@ -29,19 +29,21 @@ ArgoCDとの密接な統合により、Sync Windows や Application リソース
 
 ## 既存のArgoCDにあるアプリケーションの確認
 ・　chapter_argocdを実施した場合、アプリがすでに一つあります。
+
 ![image](image/updater1.png)
 
 
 ## ArgoCD Image Updaterで管理するアプリケーションを作成
 ```
 kubectl apply -f ./manifest/application_argocdupdate.yaml
+
 ```
-・ <b>argocdupdate<b>が作成されていることを確認
+・ <b>argocdupdate<b>のアプリが新しく作成されていることを確認  
+→この中身は、nginxの <b>バージョン 1.27.0</B>がインストールされています。
+
 ![image](image/updater2.png)
-
-
-
-
+![image](image/updater3.png)
+![image](image/updater4.png)
 
 
 # ArgoCD Image Updater のインストール
