@@ -31,6 +31,8 @@ kubectl apply -f ./manifest/application_argocdupdate.yaml
 ```
 
 
+
+
 # ArgoCD Image Updater のインストール
 ### 以下のリンクがあるが、今回namespaceなど異なるため、内容を変更しています。
 https://argocd-image-updater.readthedocs.io/en/stable/install/installation/
