@@ -18,12 +18,20 @@ Annotationとして付与します。その後、ArgoCD Image Updaterは、ArgoC
 満たしていれば、ArgoCDに対して新しいイメージでアプリケーションを更新します。 
 ArgoCDとの密接な統合により、Sync Windows や Application リソースに対する RBAC 認可などの高度な機能も完全にサポートされています。  
 
+## ArgoCD Image Updaterが動作する条件
+・　ArgoCDが動作していること
+・　マニフェストが、KustomizeやHelmで管理させれていること
+・　コンテナイメージリポジトリに使う認証情報は、ArgoCD Image updaterと同じクラスター上で存在すること
+・　ArgoCD Image Updaterでは、Rollback機能がないため、ArgoCD側で対応、Roadmap上にはあるがまだ未定。
+
 
 # ArgoCD Image Updater のインストール
-## chapter_argocdで、ArgoCDがインストールされていること
+## 以下のリンクがあるが、今回namespaceなど異なるため、内容を変更しています。
+https://argocd-image-updater.readthedocs.io/en/stable/install/installation/
 
+git cloneをしているので、Chapter_cicd/app/にあります。
 ```
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+kubectl apply -f ./app/argocd_image_uploader.yaml
 ```
 
 
