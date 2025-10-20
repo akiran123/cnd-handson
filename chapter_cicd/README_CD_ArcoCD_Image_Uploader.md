@@ -63,10 +63,10 @@ argocd-image-updater.argoproj.io/app.semver: ">=1.27.0 <1.28.0"
 argocd-image-updater.argoproj.io/interval: "1m"
 　・このアプリに対して1分間隔で新しいタグがないかチェック
 
-全体的な動きについては、Argo CDは指定Gitのchapter_cicd/appを監視・同期し、argocd-demoにアプリを展開します。  
+全体的なmanifestの動きとしては、Argo CDは指定Gitのchapter_cicd/appを監視・同期し、argocd-demoにアプリを展開します。  
 Image Updaterは1分ごとにこのApplicationをスキャンして、ghcr.io/nginxinc/nginx-unprivilegedのタグを取得。  
 セマンティック範囲（>=1.27.0 <1.28.0）でより新しいタグが見つかれば、write-back-method=argocdに従い、
-Applicationの仕様（内部的にspec.sourceのイメージ指定）を直接更新します。  
+Applicationのバージョンを（内部的にspec.sourceのイメージ指定）を直接更新します。 (1.27.0 → 1.27.xのLatestへ) 
 Argo CDはその更新を検知し、自動SyncによりDeploymentのコンテナイメージを新しいタグへ差し替えます。  
 ```
 
@@ -83,5 +83,16 @@ https://argocd-image-updater.readthedocs.io/en/stable/install/installation/
 ```
 kubectl apply -f ./manifest/argocd_image_uploader.yaml
 ```
+
+このmanifestにより、ArgoCD Image Updaterが動作します。 
+すると、1.27.0のnginxバージョンから最新のnginx 1.27.xの最新版に更新されます。(作成当時は、1.27.4が最新版)  
+
+![image](image/updater5.png)
+![image](image/updater6.png)
+![image](image/updater7.png)
+
+
+
+
 
 
