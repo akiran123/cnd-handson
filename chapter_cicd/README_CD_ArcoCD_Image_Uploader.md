@@ -34,12 +34,41 @@ ArgoCDとの密接な統合により、Sync Windows や Application リソース
 
 
 ## ArgoCD Image Updaterで管理するアプリケーションを作成
-```
-kubectl apply -f ./manifest/application_argocdupdate.yaml
+
+・以下のmanifestの中で、レポジトリ設定があるため、自分のレポジトリに修正してください。
 
 ```
+kubectl apply -f ./manifest/application_argocdupdate.yaml
+```
+
 ・ <b>argocdupdate<b>のアプリが新しく作成されていることを確認  
-→この中身は、nginxの <b>バージョン 1.27.0</B>がインストールされています。
+
+```
+Manifestについては、nginxのバージョン 1.27.0がインストールします。
+
+Image Updater用アノテーション（自動イメージ更新の設定）
+
+argocd-image-updater.argoproj.io/image-list: app=ghcr.io/nginxinc/nginx-unprivileged
+追跡対象のイメージを定義（別名appを付与）。以降の設定でapp.〜の接頭辞に一致する
+
+argocd-image-updater.argoproj.io/write-back-method: argocd
+Gitには書き戻さず、Applicationの設定を直接更新して反映するモード
+
+argocd-image-updater.argoproj.io/app.update-strategy: semver
+　セマンティックバージョンに従って更新
+
+argocd-image-updater.argoproj.io/app.semver: ">=1.27.0 <1.28.0"
+　1.27系の最新（例: 1.27.4など）に自動追随する範囲指定
+
+argocd-image-updater.argoproj.io/interval: "1m"
+　・このアプリに対して1分間隔で新しいタグがないかチェック
+
+全体的な動きについては、Argo CDは指定Gitのchapter_cicd/appを監視・同期し、argocd-demoにアプリを展開します。  
+Image Updaterは1分ごとにこのApplicationをスキャンして、ghcr.io/nginxinc/nginx-unprivilegedのタグを取得。  
+セマンティック範囲（>=1.27.0 <1.28.0）でより新しいタグが見つかれば、write-back-method=argocdに従い、
+Applicationの仕様（内部的にspec.sourceのイメージ指定）を直接更新します。  
+Argo CDはその更新を検知し、自動SyncによりDeploymentのコンテナイメージを新しいタグへ差し替えます。  
+```
 
 ![image](image/updater2.png)
 ![image](image/updater3.png)
